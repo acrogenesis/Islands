@@ -14,6 +14,11 @@ defmodule IslandsEngine.Island do
     end
   end
 
+  @doc "Returns a list of valid island types."
+  def types() do
+    [:atoll, :dot, :l_shape, :s_shape, :square]
+  end
+
   def overlaps?(existing_island, new_island) do
     not MapSet.disjoint?(existing_island.coordinates, new_island.coordinates)
   end
