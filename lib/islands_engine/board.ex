@@ -1,4 +1,4 @@
-defmodule Board do
+defmodule IslandsEngine.Board do
   alias IslandsEngine.{Coordinate, Island}
 
   def position_island(board, key, %Island{} = island) do
