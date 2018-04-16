@@ -10,11 +10,15 @@ defmodule IslandsEngine.Game do
   end
 
   def start_link(name) when is_binary(name) do
-    GenServer.start_link(__MODULE__, name, [])
+    GenServer.start_link(__MODULE__, name, name: via_tuple(name))
   end
 
   def add_player(game, name) when is_binary(name) do
     GenServer.call(game, {:add_player, name})
+  end
+
+  def via_tuple(name) do
+    {:via, Registry, {Registry.Game, name}}
   end
 
   def handle_call({:add_player, name}, _from, state_data) do
